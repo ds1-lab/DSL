@@ -1,29 +1,30 @@
-def dfs(matrix, start, visited, sequence):
-    visited[start] = True
-    sequence.append(start)
-    print("Current DFS visit sequence:", sequence)
-    
-    for i in range(len(matrix[start])):
-        if matrix[start][i] == 1 and not visited[i]:
-            dfs(matrix, i, visited, sequence)
+graph={}
 
-n = int(input("Enter number of locations: "))
-matrix = [[0 for _ in range(n)] for _ in range(n)]
+n = int(input("\nEnter No. of Location :  "))
+for i in range (n):
+    graph[i] = []
 
-e = int(input("Enter number of routes (connections): "))
-print("Enter connections (example: 0 1 means route between 0 and 1):")
-for _ in range(e):
-    u, v = map(int, input().split())
-    matrix[u][v] = 1
-    matrix[v][u] = 1
+e = int(input("\nEnter No. of routes : "))
+for i in range (e):
+    u=int(input("From  :  "))
+    v=int(input("To  :  "))
+    graph[u].append(v)
+    graph[v].append(u)
 
-print("\nAdjacency Matrix:")
-for row in matrix:
-    print(row)
+print("\nAdjecency Matric : ")
+for i in graph:
+    print(f"{i}  {graph[i]}")
 
-visited = [False] * n
-sequence = []
-print("\nSequence of locations visited using DFS:")
-dfs(matrix, 0, visited, sequence)
+start=(int(input("Enter Start point :  ")))
 
-print("\nFinal DFS visiting sequence:", sequence)
+visited = []
+
+def dfs(node):
+    if node not in visited:
+        visited.append(node)
+        for n in graph[node]:
+            dfs(n)
+
+dfs(start)
+print("\n")
+print(visited)
