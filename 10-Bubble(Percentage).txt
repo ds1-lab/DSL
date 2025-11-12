@@ -1,0 +1,41 @@
+def bubble(percentage):
+    n=len(percentage)
+    
+    for i in range(n):
+        for j in range(n-i-1):
+            if percentage[j]>percentage[j+1]:
+                percentage[j],percentage[j+1]=percentage[j+1],percentage[j]
+
+percentage=[]
+while True:
+    print("\n===Bubble Sort===")
+    print("1  Enter Percentage ")
+    print("2  Sort in assending order (Bubble Sort)")
+    print("3  Show top 5 percentage")
+    print("4  Exit")
+
+    ch = (int(input("Enter Your choice : ")))
+
+    if ch==1:
+        emp=int(input("Enter No. of Students: "))
+        for i in range (emp):
+            sal=int(input(f"Enter Percentage (0% - 100%) for Student No. {i+1}: "))
+            percentage.append(sal)
+
+    elif ch==2:
+        bubble(percentage)
+        print("\nSorted percentage (Bubble Sort): ")
+        print(percentage)
+
+    elif ch==3:
+        top5=percentage[-5:]
+        top5.reverse()
+        for i in top5:
+            print(i)
+
+    elif ch==5:
+        print("Exiting...")
+        break
+
+    else:
+        print("Invalid Input...")

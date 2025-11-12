@@ -1,0 +1,59 @@
+def avg(l,n):
+    print("avg marks::",sum(l)/n)
+
+def high(l):
+    print("max no. of marks ::",max(l))
+    
+def low(l):
+    print("min no. of marks :: ",min(l))
+    
+def zero(l):
+    print("zero marks :: ",l.count(0))
+    
+def freq(l):
+    print("Marks freq :: ")
+    v={}
+    for i in l:
+        if i in v:
+            v[i]+=1
+        else:
+            v[i]=1
+    for i in v:
+        print(i,"  frequency:  ",v[i])
+
+            
+
+
+print("MARKS OF STUDENTS")
+l=[]
+n=int(input("enter no. of Sudents:"))
+for i in range(n):
+    x=int(input("enter the marks of student:"))
+    l.append(x)
+
+while True:
+    print("menu")
+    print("1.avg marks ")
+    print("2.higest marks")
+    print("3.lowest marks")
+    print("4.count zero marks ")
+    print("5.marks frequency ")
+    print("6.exit")
+    
+    c=int(input("enter your choice : "))
+    
+    if c==1:
+        avg(l,n)
+    elif c==2:
+        high(l)
+    elif c==3:
+        low(l)
+    elif c==4:
+        zero(l)
+    elif c==5:
+        freq(l)
+    elif c==6:
+        print("exiting")
+        break
+    else:
+        print("invalid input")

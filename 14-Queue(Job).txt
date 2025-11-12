@@ -1,0 +1,51 @@
+from collections import deque
+
+class Jobprocess:
+    def __init__(self):
+        self.job_data=deque()
+
+    def addJob(self,job_name):
+        self.job_data.append(job_name)
+        print(f"{job_name} successfully created")
+
+    def delJob(self):
+        if not self.job_data:
+            print("No job to delete")
+        else:    
+            job=self.job_data.popleft()
+            print(f"{job}Successfully deleted")
+
+    def display(self):
+        if not self.job_data:
+            print("No job to display")
+        else:
+            print("\nJob Data:")
+            for i, job_name in enumerate(self.job_data,1):
+                print(f"{i} . {job_name}") 
+    
+jobs=Jobprocess()
+
+while True:
+    print("\n==== JOB QUEUE SYSTEM ====")
+    print("1. Add Job")
+    print("2. Delete Job")
+    print("3. Display All Jobs")
+    print("4. Exit")
+
+    choice = input("Enter your choice (1-4): ")
+
+    if choice == '1':
+        job_name=input("Enter Job Name: ")
+        jobs.addJob(job_name)
+
+    elif choice == '2':
+        jobs.delJob()
+
+    elif choice == '3':
+        jobs.display()
+
+    elif choice == '4':
+        print("Exiting...")
+
+    else:
+        print("Invalid Input...")

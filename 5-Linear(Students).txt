@@ -1,0 +1,29 @@
+def li_roll(l):
+    key=int(input("\nEnter the key you want find:  "))
+    for i in range (len(l)):
+        if key==l[i]:
+            print(f"Key : {key} Found at index :{i+1}")
+            return
+    print("No Such Key")
+
+l=[]
+n=int(input("\nEnter No. of Stuents: "))
+for i in range (n):
+    x=int(input(f"Enter Roll No For student {i+1}: "))
+    l.append(x)
+
+
+while True:
+    print("\n1. Search")
+    print("2. Exit")
+    
+    c=int(input("\nEnter your choice : "))
+    
+    if c==1:
+        li_roll(l)
+    
+    elif c==2:
+        print("Exiting....")
+        break
+    else:
+        print("Invalid input")

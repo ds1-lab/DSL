@@ -1,0 +1,29 @@
+def dfs(matrix, start, visited, sequence):
+    visited[start] = True
+    sequence.append(start)
+    print("Current DFS visit sequence:", sequence)
+    
+    for i in range(len(matrix[start])):
+        if matrix[start][i] == 1 and not visited[i]:
+            dfs(matrix, i, visited, sequence)
+
+n = int(input("Enter number of locations: "))
+matrix = [[0 for _ in range(n)] for _ in range(n)]
+
+e = int(input("Enter number of routes (connections): "))
+print("Enter connections (example: 0 1 means route between 0 and 1):")
+for _ in range(e):
+    u, v = map(int, input().split())
+    matrix[u][v] = 1
+    matrix[v][u] = 1
+
+print("\nAdjacency Matrix:")
+for row in matrix:
+    print(row)
+
+visited = [False] * n
+sequence = []
+print("\nSequence of locations visited using DFS:")
+dfs(matrix, 0, visited, sequence)
+
+print("\nFinal DFS visiting sequence:", sequence)

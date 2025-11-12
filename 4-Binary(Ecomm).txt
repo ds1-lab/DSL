@@ -1,0 +1,40 @@
+def bi_cus(l):
+    key=int(input("Enter The Key You want to find:  "))
+    low=0
+    high=n
+    found=0
+    while low<=high:
+        mid = (high+low)//2
+
+        if l[mid]==key:
+            print(f"Key {key} Found at {mid}")
+            break
+        elif key< l[mid]:
+            high=mid-1
+        else:
+            low=mid+1
+    if found==0:
+        print("No Such Key Found")
+
+
+l=[]
+
+n=int(input("Enter No of customer:  "))
+for i in range(n):
+    x=int(input(f"Enter {i+1} Customer Id:  "))
+    l.append(x)
+
+while True:
+    print("1. binary search")
+    print("2.exit")
+    
+    c=int(input("enter your choice : "))
+    
+    if c==1:
+        bi_cus(l)
+    
+    elif c==2:
+        print("exiting")
+        break
+    else:
+        print("invalid input")

@@ -1,0 +1,30 @@
+def Ecom(l):
+    key=int(input("Enter ID to Search (Linear):  "))
+    for i in range (len(l)):
+        if key==l[i]:
+            print(f"Key {key} found at Index {i+1} ")
+
+l=[]
+
+n=int(input("Enter The No. Of Customer :  "))
+for i in range(n):
+    cos=int(input("Enter Customer ID :  "))
+    l.append(cos)
+
+while True:
+    print("1.search")
+    print("2.exit")
+
+    ch =input("Enter You Choice:  ")
+
+    if ch=='1':
+        Ecom(l)
+    
+    elif ch=='2':
+        print("Exiting....")
+        break
+
+    else:
+        print("Invalid Input...")
+        
+

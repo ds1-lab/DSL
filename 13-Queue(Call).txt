@@ -1,0 +1,73 @@
+# A call center receives incoming calls, and each call is assigned a unique customer ID. The
+# calls are answered in the order they are received. Your task is to simulate the call queue of a
+# call center using a queue data structure.
+# • addCall(customerID, callTime): Add a call to the queue with the customer ID and the
+# call time (in minutes).
+# • answerCall(): Answer and remove the first call from the queue.
+# • viewQueue(): View all calls currently in the queue without removing them.
+# • isQueueEmpty(): Check if the queue is empty.
+
+from collections import deque
+
+class CallProcess:
+
+    def __init__(self):
+        self.call_store=deque()
+
+    def addCall(self,callid,calltime):
+        self.call_store.append((callid,calltime))
+        print(f"\nAdded :  {callid}  for  {calltime} mins")
+    
+    def answercall(self):
+        if not self.call_store:
+            print("\nNo call to answer ")
+            return
+        self.call_store.popleft()
+        print(f"\nAnswered Most Recent Call Sucessfully !!")
+    
+    def viewQueue(self):
+        if not self.call_store:
+            print("\nNo pending Calls ")
+            return
+        for i,(callid,calltime) in enumerate(self.call_store,1):
+            print(f"{i}  :  {callid} - ID   :   {calltime}mins  -  Time")
+
+    def isQueueEmpty(self):
+        if not self.call_store:
+            print("Call Queue is Empty")
+        else:
+            print("There arre pending calls (To see them press (4) )")
+
+    
+System = CallProcess()
+
+while True:
+        print("\n==== CALL CENTER MENU ====")
+        print("1. Add Call")
+        print("2. Answer Call")
+        print("3. View Call Queue")
+        print("4. Check if Queue is Empty")
+        print("5. Exit")
+
+        ch=input("\nEnter the choice : ")
+
+        if ch=='1':
+            callid=(input("\nEnter call ID: "))
+            calltime=(input("Enter Call Time: "))
+            System.addCall(callid,calltime)
+
+        elif ch=='2':
+            System.answercall()
+
+        elif ch=='3':
+            System.isQueueEmpty()
+
+        elif ch=='4':
+            System.viewQueue()
+
+        elif ch=='5':
+            print("Exiting...")
+            break
+
+        else:
+            print("Invalid Input")

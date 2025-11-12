@@ -1,0 +1,71 @@
+# Implement a real-time event processing system using a Queue data structure. The system
+# should support the following features:
+# • Add an Event: When a new event occurs, it should be added to the event queue.
+# • Process the Next Event: The system should process and remove the event that has
+# been in the queue the longest.
+# • Display Pending Events: Show all the events currently waiting to be processed.
+# • Cancel an Event: An event can be canceled if it has not been processed.
+
+from collections import deque
+
+class EventMS:
+    
+    def __init__(self):
+        self.event_store=deque()
+
+    def add(self,New_Event):
+        self.event_store.append(New_Event)
+        print(f"\n{New_Event} Added Sucessfully")
+    
+    def process(self):
+        if not self.event_store:
+            print("No Event to process")
+            return
+        self.event_store.popleft()
+        print(f"\nEvent Processed Sucssfully")
+    
+    def Display(self):
+        if not self.event_store:
+            print("No Event to Display")
+            return
+        for idx,New_Event in enumerate(self.event_store,1):
+            print(f"{idx} . {New_Event}")
+    
+    def Cancel(self,cancel_event):
+        if cancel_event in self.event_store:
+            self.event_store.remove(cancel_event)
+            return
+        print("No Such Event to Cancel")
+
+System=EventMS()
+
+while True:
+    print("\n=====Event Management System=====")
+    print("1) Add Event")
+    print("2) Process Event")
+    print("3) Display Event")
+    print("4) Cancel Event")
+    print("5) Exit\n")
+
+    ch=(input("\nEnter Your Choice:  "))
+
+    if ch=='1':
+        New_Event=input("Enter Event Name:  ")
+        System.add(New_Event)
+
+    elif ch=='2':
+        System.process()
+
+    elif ch=='3':
+        System.Display()
+
+    elif ch=='4':
+        cancel_event=input("Enter Event You want to Cancel:  ")
+        System.Cancel(cancel_event)
+
+    elif ch=='5':
+        print("Exiting...")
+        break
+
+    else:
+        print("Invalid input")
